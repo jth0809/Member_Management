@@ -1,0 +1,130 @@
+sql1 에 들어가야할 항목 1. 출석 2. 개인정보 (이름,전화번호,성별,나이,소속 반,시간대,실력,요금제,최초가입일,마지막출석일) 고유아이디(추상데이터)
+
+sql1의 정보와 연동된 실력 그래프 sql2 세부 실력 데이터 공격 수비 드라이브 로테이션 체력 순발력 판단력 앞사각
+
+sql3 가계부 날짜연동
+
+출석 누르면 날짜도 저장(최종출석일)
+
+attendance_number INT, name, age, phone_number, level, plan, first_attendance_date, last_attendance_date
+
+
+
+화면의 구성
+회원목록 및 회원검색 가계부 일정 
+
+이후 왼쪽상단에 모드변경 버튼 표출
+좌측상단 모드변경 버튼
+좌측중단 그래프
+좌측하단 달력
+우측상단 정보출력
+우측하단 삽입 수정 삭제 및 정보클릭시 수정할수있게 값이 들어옴
+
+모든 정보 왼쪽에는 출석 버튼 표출
+
+날짜클릭시 오른쪽 공간에 정보 표출
+
+
+
+QCalendarWidget을 이용한 날짜별 예약인원 표시 및 출석인원 표시 및 등록 (sql1에 저장)
+
+달력을 크게 만들고 따로 화면을 구성해서 날짜별 일정확인
+
+그래프 와 코멘트를 인쇄할수있는 창을 따로 띄움
+
+출석을 한달에한번 초기화
+
+최대출석횟수 : 몇회출석했는가?
+년월별로 따로 저장
+
+버튼을 눌렀을때 0으로 초기화
+
+안온사람을 체크후 저장버튼 클릭시 그외인원 출석처리
+
+검색기준 정해서 검색기능
+
+수정을 누르면 수정가능상태로 변경됨 그외 수정불가
+
+
+레슨 했는지 여부 open close 검사 해놓으면 자동으로 레슨을 못받은 사람을 모아서 따로 나오고
+레슨 보상 이월 환불 여부 와 아직 미정인지 여부 파악
+환불금액 자동 계산
+
+어떤 기준으로 모인 집합
+
+새벽 오전 오후 야간
+
+몇월달 회원목록
+데이터베이스
+실행시 항상검사 현재년 + 현재월 + members 테이블 자동생성 디폴트 년월 == 현재 년월 if 테이블이 없다면 생성
+N월 데이터 선택기능 불러오기를 통한 테이블변경
+
+총컬럼
+id 최대출석횟수 출석횟수 이름 성별 전화번호 주소 실력(능력치 평균으로 계산) 시간대(새벽 오전 오후 야간) 요금제(총금액) 최초가입일(자동등록) 최종출석일(자동수정)
++ 능력치8가지 + 레슨못받은횟수 보상여부(이월 환불 미정) 환불액(요금제/최대출석횟수*레슨못받은횟수) 예약일자
+24
+Max_att,att,name,sex,ph_num,address,time,price,first_att,last_att,attack,defense,drive,rotation,health,wits,judgment,fronts,nolesson,compensation,refund,reservation
+
+
+? 일정과 회원 연동 회원예약 날짜 데이터베이스 생성후
+
+
+
+
+테이블 나누기
+개인정보+요금제(반) 출석 능력치(실력등급은 능력치 평균값) 날짜(달력에 표시시 자동생성?) 환불
+
+새벽 오전 오후 야간 = 8
+주말 = 2 (토,일)
+
+화면 구성 순서
+
+달력     출석      그래프
+정보 (삽입수정삭제)   DB
+
+
+
+
+
+
+
+
+
+        calendar = QPushButton()
+        check = QPushButton()
+        graph = QPushButton()
+        member = QPushButton()
+        change = QPushButton()
+        db = QPushButton()
+        
+        calendar.setSizePolicy(QSizePolicy.Expanding,QSizePolicy.Expanding)
+        check.setSizePolicy(QSizePolicy.Expanding,QSizePolicy.Expanding)
+        graph.setSizePolicy(QSizePolicy.Expanding,QSizePolicy.Expanding)
+        member.setSizePolicy(QSizePolicy.Expanding,QSizePolicy.Expanding)
+        change.setSizePolicy(QSizePolicy.Expanding,QSizePolicy.Expanding)
+        db.setSizePolicy(QSizePolicy.Expanding,QSizePolicy.Expanding)
+        
+        calendar.setFlat(True)
+        check.setFlat(True)
+        graph.setFlat(True)
+        member.setFlat(True)
+        change.setFlat(True)
+        db.setFlat(True)
+        
+        button.setIcon(QIcon(name[i][j]))
+        button.setIcon(QIcon(name[i][j]))
+        button.setIcon(QIcon(name[i][j]))
+        button.setIcon(QIcon(name[i][j]))
+        button.setIcon(QIcon(name[i][j]))
+        button.setIcon(QIcon(name[i][j]))
+        
+        button.setIconSize(QSize(100, 100))
+        
+        
+데이터베이스 구성
+테이블 삽입 삭제 수정
+컬럼 삽삭수
+
+선택상자 테이블 컬럼 선택
+테이블 선택시 테이블 이름 미표시
+컬럼 선택시 테이블 선택상자 or 클릭으로 값들어가게하기
