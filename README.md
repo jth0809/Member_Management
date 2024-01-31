@@ -27,6 +27,7 @@ DB의 id를 재할당하는 방법을 고민하다가 상기한 이유로 중단
 
 하지만 현재의 생각으로는 코드의 가독성과 최적화를 더욱 고려했어야 한다고 생각합니다.
 
+# 동작 사진 (일부)
 <img src= img/member.png>
 <img src= img/member1.PNG>
 <img src= img/member2.PNG>
